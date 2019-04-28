@@ -1,0 +1,315 @@
+
+/* Home page logos */
+@media all and (max-width: 900px) {
+  
+  #buddha.home .light-grey .span3 { margin: 10px;}
+
+  #buddha.home .light-grey .inner-box {
+    display: block;
+    margin: auto;
+    width: 90%;
+    clear: both;
+  }
+
+  #buddha.home .light-grey .span3 {
+    margin: 10px;
+    float: none;
+    display: inline-block;
+    padding-bottom: 0;
+  }
+}
+
+
+@media all and (max-width: 800px) {
+
+  .span12.home-pods-container { margin-top: 50px!important;}
+
+  .home-pods-container .span3 {
+    display: inline-block;
+    float: none!important;
+    width: 23%!important;
+    vertical-align: top;
+  }
+
+  .home-pods-container .span3 br { display: none;}
+
+  .home-pods-container .span3 h4,
+  .home-pods-container .span3 p {
+    padding: 0 10px;
+  }
+
+  .home-pods-container .span3 h4 { 
+    font-size: 15px;
+    margin: 20px 0 0 0;
+  }
+
+
+  .span12.home-content .span6 {
+    display: block;
+    float: none;
+    width: 100%;
+  }
+
+  .span12.home-content .span6 img { margin: auto;}
+
+
+  /* Slider text */
+  .slider.slick-slide p {
+  font-size: 2em;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  width: 300px;
+}
+
+
+}
+
+
+
+
+
+
+
+@media all and (max-width: 600px) {
+
+  /*** Header ***/
+  .total-top { margin-bottom: 0;}
+  .total-top .top-blue { height: 15px;}
+  .total-top .top-green { height: 5px;}
+
+  /*#buddha .logo-container { width: 240px;}*/
+
+
+  #buddha #header,
+  #buddha #header .logo-container #logo,
+  #buddha #toggle-menu,
+  #buddha #toggle-menu .toggle-menu {
+    height: 30px!important;
+    line-height: 0!important;
+  }
+
+  
+  #buddha #header .logo-container #logo,
+  #buddha #toggle-menu .toggle-menu {
+    margin: 20px 0;
+  }
+
+  #buddha #toggle-menu .toggle-menu { margin: 30px 0 0 0!important;}
+
+
+  /* wave graphic pop out before home slider */
+
+  #buddha #main_navigation { background-color: #fff; box-shadow: none;}
+  .home-content { margin-top: 80px;}
+
+  body#buddha {
+    background-position: -130px 31px;
+    background-size: 800px auto;
+    background-color: #FFF;
+  }
+
+
+  /*** Home Slider ***/
+  .slider.slick-slide p {
+    bottom: auto;
+    font-size: 1.1em;
+    top: 10px;
+    width: 200px;
+  }
+
+  /* remove photo description */
+  .slider.slick-slide p.photo-description { display: none;}
+
+  .home-content .slick-arrow { display: none!important;}
+
+  .slick-dots { bottom: 0; right: 5px;}
+  .slick-dots li { width: 10px; height: 10px;}
+
+
+
+
+  /*** Home Pods ***/
+  .home-pods-container .with-border::before { display: none;}
+
+  .home-pods-container h4 {
+    font-size: 20px;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .home-pods-container .span3 {
+    border-bottom: 1px solid;
+    height: auto!important;
+    margin-bottom: 30px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  /*** Layout ***/
+
+  /* Content area background color */
+  #buddha .section-with-sidebar { padding-top: 100px;}
+
+  #buddha .span3,
+  #buddha .span6 {
+    width: 100%!important;
+    clear: both;
+    float: none;
+  }
+
+
+  /* Sidebar */
+  #buddha #sidebar.span3 { float: none; margin-top: 60px;}
+
+  
+
+  /*** Resources ***/
+  .download .left { width: 100%;}
+
+  /* Download link and arrow */
+  .download-link p {
+    width: 80%;
+    display: inline-block;
+  }
+
+  .download-arrow {
+    float: right;
+    display: block;
+    top: 0px;
+  }
+
+  .download .right { float: none; width: 100%;}
+
+
+  /* Maps */
+
+  .maps-container .bg-white {
+    background: #fff none repeat scroll 0 0;
+    margin-top: 1em;
+    padding: 0 !important;
+    margin-bottom: 2em;
+  }
+
+  .span12.maps-section { padding-bottom: 0!important;}
+
+  .map-download {
+    display: block;
+    min-height: 310px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 3em;
+  }
+
+  .map-download .download-link {
+    display: inline-block!important;
+    width: 100%;
+  }
+
+  .data-info.map-info {
+    position: relative;
+    top: -50px;
+    font-size: 0.9em;
+    padding: 10px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  /*** Footer ***/
+  .footer-link { margin: 40px 10px 0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+@media all and (max-width: 550px) {
+  .headshot { display: none;}
+
+  .ten.columns .headshot {
+    display: block;
+    width: 20%;
+    float: left;
+    margin: 0 20px 20px 0;
+  }
+}
+
+
+
+
+
+@media all and (max-width: 420px) {
+  .event-images-container > img { width: 80%;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
