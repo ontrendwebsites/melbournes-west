@@ -12,6 +12,9 @@ if( function_exists('acf_add_options_page') ) {	acf_add_options_page(); }
 function load_custom_script() {
 	
 	wp_enqueue_script('jquery', ("http://code.jquery.com/jquery-latest.min.js"), false, '');
+
+	// moment.js
+	wp_enqueue_script('script-moment', ("https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"), false, '');
 	
 	// onTrend custom files
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/js/custom.js');

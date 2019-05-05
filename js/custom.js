@@ -44,10 +44,8 @@ jQuery(document).ready(function(){
 });
 
 
-
-
 (function($) {
-  function ajaxRequestv2() {
+  function ajaxRequest() {
     var $response = $('.response');
     
     var settings = {
@@ -61,55 +59,78 @@ jQuery(document).ready(function(){
       
       var responseString = JSON.stringify(serverData);
       console.log(responseString);
-      
-      // store json into a variable
-      var storedJson = serverData;
 
       // show all titles
       var objects = serverData.data;
 
       var buildHtml = "";
+
+      buildHtml += "<div class='events-container'>";
+
+      // object loop to build the card HTML
       for (var i= 0; i < objects.length; i++) {
-        // vars
-        var $title = objects[i].Title;    // title
-        var $image = JSON.stringify(objects[i].Images[0].Url);   // title
+
+        // build the card HTML
+        buildHtml += '<div class="event-card">';
+
+        // URL
+        var $url = objects[i].Url;
+        // title
+        var $title = objects[i].Title;
+        // image
+        var $image = JSON.stringify(objects[i].Images[0].Url);
+        // dates
+        var $dates = objects[i].Dates;
+        // times
+        var $times = objects[i].Hours;
+        // location
         var $location = objects[i].Location;
 
-        if(objects[i].Dates[0]) {
-          var $date1 = objects[i].Dates[0];
-          var $date1text = Date($date1.slice(0,4), $date1.slice(4,6), $date1.slice(6,8));
-        }
-
-        if(objects[i].Dates[1]) {
-          var $date2 = objects[i].Dates[0];
-          var $date2text = Date($date2.slice(0,4), $date2.slice(4,6), $date2.slice(6,8));
-        }
-
-
-        
         
         // build the HTML
-        buildHtml += '<h4>' + $title + '</h4>';
-        buildHtml += '<p>Date 1: ' + $date1text + '</p>';
-        if($date2text) {
-          buildHtml += '<p>Date 2: ' + $date2text + '</p>';
-        }
-        buildHtml += '<p>Location: ' + $location + '</p>';
         buildHtml += '<img src=' + ($image) + ' />';
-
-        // image
+        buildHtml += '<h3>' + $title + '</h3>';
+        // Event link
         if(objects[i].BookingUrl) {
           buildHtml += '<p><a href="' + objects[i].BookingUrl + '" target="_blank">Event link</a></p>';
         }
+
+        buildHtml += '<p class="event-label">dates</p>';
+
+        for (var d= 0; d < $dates.length; d++) {
+          var $dateString = $dates[d]; // get full date string
+          var $year = $dateString.slice(0,4); // get string of year - digits 1 to 4
+          var $month = $dateString.slice(4,6); // get string of month - digits 5 and 6
+          var $day = $dateString.slice(6,8); // get string of day - figits 7 and 8
+
+          var $buildDate = $year + '-' + $month + '-' + $day; // build the date with hyphens for correct format to use moment.js
+
+          var $momentDate = moment($buildDate).format('ddd Do MMM');
+
+          buildHtml += '<p class="event-dates">' + $momentDate + '</p>';
+        }
+
+        if(objects[i].Hours) {
+          buildHtml += '<p class="event-label">time</p>';
+          buildHtml += '<p>' + $times + '</p>';
+        }
+
+        if(objects[i].Location) {
+          buildHtml += '<p class="event-label">location</p>';
+          buildHtml += '<p>Location: ' + $location + '</p>';
+        }
+
+        // end card HTML
+        buildHtml += '</div>';
       }
 
+      buildHtml += "</div>";
       $response.html(buildHtml);
-
     });
   }
 
   $(window).load(function() {
-    ajaxRequestv2();
+    ajaxRequest();
   });
 
   
