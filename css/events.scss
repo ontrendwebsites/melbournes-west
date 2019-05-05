@@ -1,0 +1,27 @@
+$primary: #0073ae;
+$secondary: #009f93;
+
+@media (min-width: 768px) {
+  .events-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+  }
+}
+
+.event-card {
+  border: 1px solid $primary;
+  border-radius: 5px;
+
+  .image-container {
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+  }
+
+  .event-card-inner {
+    padding: 1em;
+  }
+}

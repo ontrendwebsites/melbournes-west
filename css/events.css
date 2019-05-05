@@ -1,0 +1,18 @@
+@media (min-width: 768px) {
+  .events-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em; } }
+.event-card {
+  border: 1px solid #0073ae;
+  border-radius: 5px; }
+  .event-card .image-container {
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top; }
+  .event-card .event-card-inner {
+    padding: 1em; }
+
+/*# sourceMappingURL=events.css.map */

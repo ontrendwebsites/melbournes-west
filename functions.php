@@ -21,6 +21,8 @@ function load_custom_script() {
 	wp_enqueue_style( 'ontrend-styles', get_stylesheet_directory_uri() . '/css/ontrendwebsites.css' );
 	wp_enqueue_style( 'responsive-styles', get_stylesheet_directory_uri() . '/css/responsive.css' );
 
+	wp_enqueue_style( 'event-styles', get_stylesheet_directory_uri() . '/css/events.css' );
+
 	wp_enqueue_style( 'skeleton-styles', get_stylesheet_directory_uri() . '/css/skeleton.css' );
 	
 	wp_enqueue_style( 'fontawesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' );
