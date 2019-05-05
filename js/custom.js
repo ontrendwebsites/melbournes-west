@@ -47,86 +47,70 @@ jQuery(document).ready(function(){
 
 
 (function($) {
-  $(document).ready(function() {
+  function ajaxRequestv2() {
+    var $response = $('.response');
+    
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://wmt.everi.com.au/feed?page=1&access_token=f0e38e70b8cd4efab644a5046b546edb",
+      "method": "GET"
+    };
 
-    // the test api click function
-    $('.test-api').click(function() {
-      ajaxRequestv2();
-    });
+    $.ajax(settings).done(function (serverData) {
+      
+      var responseString = JSON.stringify(serverData);
+      console.log(responseString);
+      
+      // store json into a variable
+      var storedJson = serverData;
 
-      // AJAX function 1
-    function ajaxRequestv1() {
-      console.log('ajax clicked');
+      // show all titles
+      var objects = serverData.data;
 
-      var $response = document.getElementsByClassName('response'); // the div where AJAX content will be displayed
-      var xhr = new XMLHttpRequest(); // new request named: xhr
+      var buildHtml = "";
+      for (var i= 0; i < objects.length; i++) {
+        // vars
+        var $title = objects[i].Title;    // title
+        var $image = JSON.stringify(objects[i].Images[0].Url);   // title
+        var $location = objects[i].Location;
 
-      xhr.onreadystatechange = function() {
-        
-        if (xhr.readystate === 4) { // ready state of 4 = got response back from server
-          console.log('ajaxing...');
-          $response.innerHTML = xhr.responseText;
+        if(objects[i].Dates[0]) {
+          var $date1 = objects[i].Dates[0];
+          var $date1text = Date($date1.slice(0,4), $date1.slice(4,6), $date1.slice(6,8));
         }
 
-        xhr.open('GET', 'https://wmt.everi.com.au/feed?page=1&access_token=f0e38e70b8cd4efab644a5046b546edb');// open the request
-        xhr.send();
-      }; // close onreadystatechange
-    } // close the function
-  
+        if(objects[i].Dates[1]) {
+          var $date2 = objects[i].Dates[0];
+          var $date2text = Date($date2.slice(0,4), $date2.slice(4,6), $date2.slice(6,8));
+        }
 
-    function ajaxRequestv2() {
-      var $response = $('.response');
-    
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://wmt.everi.com.au/feed?page=1&access_token=f0e38e70b8cd4efab644a5046b546edb",
-        "method": "GET"
+
+        
+        
+        // build the HTML
+        buildHtml += '<h4>' + $title + '</h4>';
+        buildHtml += '<p>Date 1: ' + $date1text + '</p>';
+        if($date2text) {
+          buildHtml += '<p>Date 2: ' + $date2text + '</p>';
+        }
+        buildHtml += '<p>Location: ' + $location + '</p>';
+        buildHtml += '<img src=' + ($image) + ' />';
+
+        // image
+        if(objects[i].BookingUrl) {
+          buildHtml += '<p><a href="' + objects[i].BookingUrl + '" target="_blank">Event link</a></p>';
+        }
       }
-    
-      $.ajax(settings).done(function (serverData) {
-          //console.log(serverData);
-          
-          var responseString = JSON.stringify(serverData);
-          var responseParse = JSON.parse(responseString);
 
-          //console.log(responseString);
-          //console.log(responseParse);
+      $response.html(buildHtml);
 
-          // store json into a variable
-          var storedJson = serverData;
+    });
+  }
 
-          // shows first title
-          /*
-          var titles = serverData.data[0].Title;
-          console.log(titles);
-          $response.html(titles);
-          */
-
-          // show all titles
-          var objects = serverData.data;
-          var buildHtml = "";
-          for (var i= 0; i < objects.length; i++) {
-            buildHtml += '<h4>' + objects[i].Title + '</h4>';
-          }
-
-          $response.html(buildHtml);
-
-
-
-
-
-          //$response.html(responseString);
-      });
-    }
-  
-  
-  
-
-    
-  
+  $(window).load(function() {
+    ajaxRequestv2();
   });
-  
-  
+
   
 })( jQuery );
