@@ -20,6 +20,8 @@ function load_custom_script() {
 	wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/js/custom.js');
 	wp_enqueue_style( 'ontrend-styles', get_stylesheet_directory_uri() . '/css/ontrendwebsites.css' );
 	wp_enqueue_style( 'responsive-styles', get_stylesheet_directory_uri() . '/css/responsive.css' );
+	wp_enqueue_style( 'remodal-styles', get_stylesheet_directory_uri() . '/css/remodal.css' );
+	wp_enqueue_style( 'remodal-theme-styles', get_stylesheet_directory_uri() . '/css/remodal-default-theme.css' );
 
 	wp_enqueue_style( 'event-styles', get_stylesheet_directory_uri() . '/css/events.css' );
 
@@ -30,6 +32,7 @@ function load_custom_script() {
 
 	wp_enqueue_script( 'equal-heights-js', get_stylesheet_directory_uri() . '/js/equal-heights.js');
 	wp_enqueue_script( 'masonry-js', get_stylesheet_directory_uri() . '/js/masonry.js');
+	wp_enqueue_script( 'remodal-js', get_stylesheet_directory_uri() . '/js/remodal.js');
 
 	// Load slick carousel: http://kenwheeler.github.io/slick/
 	wp_enqueue_script( 'slick-js', '//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js');

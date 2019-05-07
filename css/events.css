@@ -15,4 +15,7 @@
   .event-card .event-card-inner {
     padding: 1em; }
 
+.hidden-description {
+  display: none; }
+
 /*# sourceMappingURL=events.css.map */

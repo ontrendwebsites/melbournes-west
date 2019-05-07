@@ -46,6 +46,8 @@ jQuery(document).ready(function(){
 
 (function($) {
   function ajaxRequest() {
+    
+    // content containers
     var $response = $('.response');
     
     var settings = {
@@ -86,12 +88,31 @@ jQuery(document).ready(function(){
           var $times = objects[i].Hours;
           // location
           var $location = objects[i].Location;
+          // description
+          var $description = objects[i].Description;
 
           // build the HTML
           buildHtml += '<div class="image-container" style="background-image: url(' + $imageClean + ');"></div>';
           
           // event card wrapper
           buildHtml += '<div class="event-card-inner">';
+
+            if(objects[i].Description) {
+
+              buildHtml += '<p class="event-label"><a class="modal-link" href="#modal">View details (popup)</a></p>';
+
+              buildHtml += '<div class="hidden-description">' + $description + '</div>';
+
+              /*
+              buildHtml += '<p class="event-label"><a href="#modal' + [i] + '">View details (popup)</a></p>';
+              buildHtml += '<div class="remodal" data-remodal-id="modal-' + [i] + '">';
+              buildHtml += '<button data-remodal-action="close" class="remodal-close"></button>';
+              buildHtml += '<h1>Remodal</h1>';
+              buildHtml += '<button data-remodal-action="confirm" class="remodal-confirm">OK</button>';
+              buildHtml += '</div>';
+              */
+            }
+
             buildHtml += '<h3>' + $title + '</h3>';
             // Event link
             if(objects[i].BookingUrl) {
@@ -123,20 +144,48 @@ jQuery(document).ready(function(){
               buildHtml += '<p>Location: ' + $location + '</p>';
             }
 
+            
+
             // end card inner
             buildHtml += '</div>';
 
           // end card HTML
           buildHtml += '</div>';
-      }
+
+      } // end for loop
 
       buildHtml += "</div>";
       $response.html(buildHtml);
+
+      // add description on modal click
+      var $modalLink = $('.modal-link');
+      var $modalContent = $('.remodal-content');
+      var $eventDescription = $('.hidden-description');
+
+      $modalLink.click(function() {
+        console.log('clicked');
+
+        // the description
+        var $content = $(this).parents('.event-card-inner').children('.hidden-description').clone();
+        $modalContent.html($content);
+        if( $content.is(":visible") ) {
+          $content.hide();
+        } else {
+          $content.show();
+        }
+        
+      });
+
+
+
     });
   }
 
+
+
   $(window).load(function() {
     ajaxRequest();
+    
   });
 
   
