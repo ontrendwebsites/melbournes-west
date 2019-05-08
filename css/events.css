@@ -1,0 +1,69 @@
+.event-card {
+  margin-bottom: 2em; }
+
+@media (min-width: 768px) {
+  .events-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em; }
+
+  .event-card {
+    margin-bottom: 0; } }
+.event-card {
+  border: 2px solid #0073ae;
+  border-radius: 5px; }
+  .event-card .image-container {
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top; }
+  .event-card .event-card-inner .inner-item {
+    padding: 1rem; }
+  .event-card .event-card-inner h3,
+  .event-card .event-card-inner p {
+    margin: 0; }
+  .event-card .event-card-inner .modal-link,
+  .event-card .event-card-inner .booking-link {
+    display: block;
+    padding: .5rem 1rem;
+    background: #0073ae;
+    color: #FFF;
+    border-radius: 3px;
+    margin: 1rem;
+    text-align: center; }
+    .event-card .event-card-inner .modal-link:hover,
+    .event-card .event-card-inner .booking-link:hover {
+      background: #00517b; }
+  .event-card .event-card-inner .booking-link {
+    background: #009f93; }
+    .event-card .event-card-inner .booking-link:hover {
+      background: #006c64; }
+  .event-card .event-card-inner .fas {
+    font-family: 'FontAwesome' !important; }
+  .event-card .event-card-inner .fa-info-circle,
+  .event-card .event-card-inner .fa-ticket {
+    font-size: 1.3em;
+    position: relative;
+    top: 2px;
+    padding-left: 5px; }
+  .event-card .event-card-inner .fa-ticket::before {
+    content: "\f145"; }
+  .event-card .event-card-inner .event-label {
+    font-size: .9rem;
+    margin: 0;
+    padding-bottom: .25em; }
+  .event-card .event-card-inner .event-dates,
+  .event-card .event-card-inner .event-times,
+  .event-card .event-card-inner .event-location {
+    border-bottom: 1px solid rgba(0, 115, 174, 0.3);
+    padding: .5rem 1rem;
+    text-transform: uppercase; }
+  .event-card .event-card-inner p:last-child {
+    border: none;
+    padding-bottom: 2em; }
+
+.hidden-description {
+  display: none; }
+
+/*# sourceMappingURL=events.css.map */

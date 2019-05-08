@@ -44,89 +44,131 @@ jQuery(document).ready(function(){
 });
 
 
-
-
 (function($) {
-  $(document).ready(function() {
-
-    // the test api click function
-    $('.test-api').click(function() {
-      ajaxRequestv2();
-    });
-
-      // AJAX function 1
-    function ajaxRequestv1() {
-      console.log('ajax clicked');
-
-      var $response = document.getElementsByClassName('response'); // the div where AJAX content will be displayed
-      var xhr = new XMLHttpRequest(); // new request named: xhr
-
-      xhr.onreadystatechange = function() {
-        
-        if (xhr.readystate === 4) { // ready state of 4 = got response back from server
-          console.log('ajaxing...');
-          $response.innerHTML = xhr.responseText;
-        }
-
-        xhr.open('GET', 'https://wmt.everi.com.au/feed?page=1&access_token=f0e38e70b8cd4efab644a5046b546edb');// open the request
-        xhr.send();
-      }; // close onreadystatechange
-    } // close the function
-  
-
-    function ajaxRequestv2() {
-      var $response = $('.response');
+  function ajaxRequest() {
     
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://wmt.everi.com.au/feed?page=1&access_token=f0e38e70b8cd4efab644a5046b546edb",
-        "method": "GET"
-      }
+    // content containers
+    var $response = $('.response');
     
-      $.ajax(settings).done(function (serverData) {
-          //console.log(serverData);
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://wmt.everi.com.au/feed?page=1&access_token=f0e38e70b8cd4efab644a5046b546edb",
+      "method": "GET"
+    };
+
+    $.ajax(settings).done(function (serverData) {
+      
+      var responseString = JSON.stringify(serverData);
+      console.log(responseString);
+
+      // show all titles
+      var objects = serverData.data;
+
+      var buildHtml = "";
+
+      buildHtml += "<div class='events-container'>";
+
+      // object loop to build the card HTML
+      for (var i= 0; i < objects.length; i++) {
+
+        // build the card HTML
+        buildHtml += '<div class="event-card">';
+
+          // URL
+          var $url = objects[i].Url;
+          // title
+          var $title = objects[i].Title;
+          // image
+          var $image = JSON.stringify(objects[i].Images[0].Url);
+          var $imageClean = $image.slice(1, -1); // remove the quotes around image data
+          // dates
+          var $dates = objects[i].Dates;
+          // times
+          var $times = objects[i].Hours;
+          // location
+          var $location = objects[i].Location;
+          // description
+          var $description = objects[i].Description;
+
+          // build the HTML
+          buildHtml += '<div class="image-container" style="background-image: url(' + $imageClean + ');"></div>';
           
-          var responseString = JSON.stringify(serverData);
-          var responseParse = JSON.parse(responseString);
+          // event card wrapper
+          buildHtml += '<div class="event-card-inner">';
 
-          //console.log(responseString);
-          //console.log(responseParse);
+            if(objects[i].Description) {
+              buildHtml += '<div class="hidden-description">';
+              buildHtml += '<h3>' + $title + '</h3>';
+              buildHtml += $description;
+              buildHtml += '</div>';
+            }
 
-          // store json into a variable
-          var storedJson = serverData;
+            // title and details popup link
+            buildHtml += '<h3 class="inner-item">' + $title + '</h3>';
+            buildHtml += '<a class="modal-link inner-item" href="#modal">View details <i class="fas fa-info-circle" aria-hidden="true"></i></a>';
 
-          // shows first title
-          /*
-          var titles = serverData.data[0].Title;
-          console.log(titles);
-          $response.html(titles);
-          */
+            
+            // Event link
+            if(objects[i].BookingUrl) {
+              buildHtml += '<a class="inner-item booking-link" href="' + objects[i].BookingUrl + '" target="_blank">Bookings <i class="fas fa-ticket" aria-hidden="true"></i></a></p>';
+            }
 
-          // show all titles
-          var objects = serverData.data;
-          var buildHtml = "";
-          for (var i= 0; i < objects.length; i++) {
-            buildHtml += '<h4>' + objects[i].Title + '</h4>';
-          }
+            buildHtml += '<p class="event-label inner-item">dates</p>';
 
-          $response.html(buildHtml);
+            for (var d= 0; d < $dates.length; d++) {
+              var $dateString = $dates[d]; // get full date string
+              var $year = $dateString.slice(0,4); // get string of year - digits 1 to 4
+              var $month = $dateString.slice(4,6); // get string of month - digits 5 and 6
+              var $day = $dateString.slice(6,8); // get string of day - figits 7 and 8
+              var $buildDate = $year + '-' + $month + '-' + $day; // build the date with hyphens for correct format to use moment.js
+              var $momentDate = moment($buildDate).format('ddd Do MMM'); // format the date
 
+              buildHtml += '<p class="event-dates inner-item">' + $momentDate + '</p>';
+            }
 
+            if(objects[i].Hours) {
+              buildHtml += '<p class="event-label inner-item">time</p>';
+              buildHtml += '<p class="event-times inner-item">' + $times + '</p>';
+            }
 
+            if(objects[i].Location) {
+              buildHtml += '<p class="event-label inner-item">location</p>';
+              buildHtml += '<p class="event-location inner-item">' + $location + '</p>';
+            }
 
+            // end card inner
+            buildHtml += '</div>';
 
-          //$response.html(responseString);
+          // end card HTML
+          buildHtml += '</div>';
+
+      } // end for loop
+
+      buildHtml += "</div>";
+      $response.html(buildHtml);
+
+      // add description on modal click
+      var $modalLink = $('.modal-link');
+      var $modalContent = $('.remodal-content');
+      var $eventDescription = $('.hidden-description');
+
+      $modalLink.click(function() {
+        console.log('clicked');
+
+        // the description
+        var $content = $(this).parents('.event-card-inner').children('.hidden-description').clone();
+        $modalContent.html($content);
+        if( $content.is(":visible") ) {
+          $content.hide();
+        } else {
+          $content.show();
+        }
       });
-    }
-  
-  
-  
+    });
+  }
 
-    
-  
+  $(window).load(function() {
+    ajaxRequest();
   });
-  
-  
-  
 })( jQuery );
