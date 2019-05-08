@@ -1,8 +1,14 @@
+.event-card {
+  margin-bottom: 2em; }
+
 @media (min-width: 768px) {
   .events-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 2em; } }
+    grid-gap: 2em; }
+
+  .event-card {
+    margin-bottom: 0; } }
 .event-card {
   border: 2px solid #0073ae;
   border-radius: 5px; }

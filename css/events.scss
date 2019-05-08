@@ -1,11 +1,19 @@
 $primary: #0073ae;
 $secondary: #009f93;
 
+.event-card {
+  margin-bottom: 2em;
+}
+
 @media (min-width: 768px) {
   .events-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2em;
+  }
+
+  .event-card {
+    margin-bottom: 0;
   }
 }
 
