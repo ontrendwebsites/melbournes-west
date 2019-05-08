@@ -98,53 +98,44 @@ jQuery(document).ready(function(){
           buildHtml += '<div class="event-card-inner">';
 
             if(objects[i].Description) {
-
-              buildHtml += '<p class="event-label"><a class="modal-link" href="#modal">View details (popup)</a></p>';
-
-              buildHtml += '<div class="hidden-description">' + $description + '</div>';
-
-              /*
-              buildHtml += '<p class="event-label"><a href="#modal' + [i] + '">View details (popup)</a></p>';
-              buildHtml += '<div class="remodal" data-remodal-id="modal-' + [i] + '">';
-              buildHtml += '<button data-remodal-action="close" class="remodal-close"></button>';
-              buildHtml += '<h1>Remodal</h1>';
-              buildHtml += '<button data-remodal-action="confirm" class="remodal-confirm">OK</button>';
+              buildHtml += '<div class="hidden-description">';
+              buildHtml += '<h3>' + $title + '</h3>';
+              buildHtml += $description;
               buildHtml += '</div>';
-              */
             }
 
-            buildHtml += '<h3>' + $title + '</h3>';
+            // title and details popup link
+            buildHtml += '<h3 class="inner-item">' + $title + '</h3>';
+            buildHtml += '<a class="modal-link inner-item" href="#modal">View details <i class="fas fa-info-circle" aria-hidden="true"></i></a>';
+
+            
             // Event link
             if(objects[i].BookingUrl) {
-              buildHtml += '<p><a href="' + objects[i].BookingUrl + '" target="_blank">Event link</a></p>';
+              buildHtml += '<a class="inner-item booking-link" href="' + objects[i].BookingUrl + '" target="_blank">Bookings <i class="fas fa-ticket" aria-hidden="true"></i></a></p>';
             }
 
-            buildHtml += '<p class="event-label">dates</p>';
+            buildHtml += '<p class="event-label inner-item">dates</p>';
 
             for (var d= 0; d < $dates.length; d++) {
               var $dateString = $dates[d]; // get full date string
               var $year = $dateString.slice(0,4); // get string of year - digits 1 to 4
               var $month = $dateString.slice(4,6); // get string of month - digits 5 and 6
               var $day = $dateString.slice(6,8); // get string of day - figits 7 and 8
-
               var $buildDate = $year + '-' + $month + '-' + $day; // build the date with hyphens for correct format to use moment.js
+              var $momentDate = moment($buildDate).format('ddd Do MMM'); // format the date
 
-              var $momentDate = moment($buildDate).format('ddd Do MMM');
-
-              buildHtml += '<p class="event-dates">' + $momentDate + '</p>';
+              buildHtml += '<p class="event-dates inner-item">' + $momentDate + '</p>';
             }
 
             if(objects[i].Hours) {
-              buildHtml += '<p class="event-label">time</p>';
-              buildHtml += '<p>' + $times + '</p>';
+              buildHtml += '<p class="event-label inner-item">time</p>';
+              buildHtml += '<p class="event-times inner-item">' + $times + '</p>';
             }
 
             if(objects[i].Location) {
-              buildHtml += '<p class="event-label">location</p>';
-              buildHtml += '<p>Location: ' + $location + '</p>';
+              buildHtml += '<p class="event-label inner-item">location</p>';
+              buildHtml += '<p class="event-location inner-item">' + $location + '</p>';
             }
-
-            
 
             // end card inner
             buildHtml += '</div>';
@@ -173,20 +164,11 @@ jQuery(document).ready(function(){
         } else {
           $content.show();
         }
-        
       });
-
-
-
     });
   }
 
-
-
   $(window).load(function() {
     ajaxRequest();
-    
   });
-
-  
 })( jQuery );
