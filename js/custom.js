@@ -99,7 +99,10 @@ jQuery(document).ready(function(){
 
             if(objects[i].Description) {
               buildHtml += '<div class="hidden-description">';
+              buildHtml += '<div class="description-header">';
+              buildHtml += '<img src="' + $imageClean + '" />';
               buildHtml += '<h3>' + $title + '</h3>';
+              buildHtml += '</div>';
               buildHtml += $description;
               buildHtml += '</div>';
             }

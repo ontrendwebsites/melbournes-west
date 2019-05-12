@@ -1,7 +1,7 @@
 .event-card {
   margin-bottom: 2em; }
 
-@media (min-width: 768px) {
+@media all and (min-width: 768px) {
   .events-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -64,6 +64,17 @@
     padding-bottom: 2em; }
 
 .hidden-description {
-  display: none; }
+  display: none;
+  text-align: left; }
+
+@media all and (min-width: 768px) {
+  .description-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2em;
+    margin-bottom: 2em; }
+    .description-header h3 {
+      display: flex;
+      align-self: center; } }
 
 /*# sourceMappingURL=events.css.map */
