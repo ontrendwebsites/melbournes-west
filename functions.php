@@ -24,6 +24,7 @@ function load_custom_script() {
 	wp_enqueue_style( 'remodal-theme-styles', get_stylesheet_directory_uri() . '/css/remodal-default-theme.css' );
 
 	wp_enqueue_style( 'event-styles', get_stylesheet_directory_uri() . '/css/events.css' );
+	wp_enqueue_style( 'additions-2020-styles', get_stylesheet_directory_uri() . '/css/additions-2020.css' );
 
 	wp_enqueue_style( 'skeleton-styles', get_stylesheet_directory_uri() . '/css/skeleton.css' );
 	
