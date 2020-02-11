@@ -1,9 +1,14 @@
 $mobile: 320px;
 $tablet: 768px;
-$desktop: 960px;
+$desktop: 980px;
 
 $primary: #0073ae;
 $secondary: #009f93;
+$white: #FFF;
+$grey: #7c8b8f;
+$hang-dark: #5f090d;
+$hang-red: #ef3e22;
+$hang-aqua: #58bbac;
 
 // font-family: "Open Sans", sans-serif;
 // font-family: 'durus';
@@ -11,22 +16,38 @@ $secondary: #009f93;
 
 .hanging-local-page {
 
+  .c-section-header {
+    font-size: 2em;
+    padding: 0;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 3em;
+      padding: 1em 0 .6em;
+    }
+  }
+
   section {
     border-bottom: 1px solid $primary;
-    margin: 1em 0;
-    padding-bottom: 1em;
+    margin: 2em 0;
+    padding-bottom: 3em;
 
     &.c-intro {
 
+      padding: 0;
+
       p {
-        margin: auto;
+        //margin: auto;
         font-family:"Montserrat",sans-serif;
         font-size: 1.2em;
         line-height: 160%;
 
         @media screen and (max-width: $tablet) {
-          margin: 1em;
+          margin-bottom: 1em;
         }
+      }
+
+      @media screen and (max-width: $tablet) {
+        padding-bottom: 1em;
       }
     }
   }
@@ -42,6 +63,10 @@ $secondary: #009f93;
     grid-template-columns: 1fr 1fr;
   }
 
+  &.c-grid-layout__three-column {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
   &.c-grid-layout__gap-1em { grid-gap: 1em }
   &.c-grid-layout__gap-2em { grid-gap: 2em }
   &.c-grid-layout__gap-3em { grid-gap: 3em }
@@ -52,7 +77,156 @@ $secondary: #009f93;
 
   // custom grids
   &.c-grid-layout__two-column-hanging-intro {
-    grid-template-columns: 1.5fr 1fr;
+    display: block;
     justify-items: center;
+    background: #5f090d;
+    background: $white;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+    }
+
+    div {
+      margin: auto;
+    }
+
+    img {
+      margin-bottom: 1.5em;
+    }
+
+    p, h3, a {
+      color: $white;
+      color: $hang-dark;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.2em;
+      line-height: 140%;
+    }
+
+
+
+    @media screen and (min-width: $tablet) {
+      h3 {
+        font-size: 2em;
+      }
+
+      img {
+        margin-bottom: 3em;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
   }
 }
+
+.c-videos {
+
+  .video {
+    //border: 1px solid $grey;
+    //padding: 1.5em;
+    //border-radius: 5px;
+    margin: 0;
+    border: none;
+    //background: pink;
+    padding-bottom: 5em;
+    position: relative;
+
+    // elements to keep aligned
+    h5,
+    h4,
+    p {
+      align-self: start;
+    }
+
+
+    @media screen and (max-width: $tablet) {
+      margin-bottom: 1em;
+    }
+
+    h5 {
+      margin-top: .5em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: $hang-red;
+      border-bottom: 2px solid;
+      
+    }
+
+    &:nth-child(2n+0) h5 {
+      color: $hang-aqua;
+    }
+
+    p {
+      margin: 0 0 .5em 0;
+      line-height: 150%;
+    }
+
+    .booking-link {
+      margin-top: .5em;
+      font-family: 'Open Sans';
+      font-weight: 900;
+      font-size: 1.2em;
+      padding: 12px;
+      background: $primary;
+      color: $white;
+      display: block;
+      border-radius: 3px;
+      text-align: center;
+      text-transform: uppercase;
+
+      &:hover {
+        background: darken($primary, 10%);
+      }
+
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+  }
+}
+
+.gallery {
+
+  .gallery-item {
+    display: none;
+
+    &:first-child {
+      display: block;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

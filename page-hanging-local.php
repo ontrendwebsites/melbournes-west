@@ -24,7 +24,7 @@
       <!-- Two column intro section -->
       <section class="c-grid-layout c-grid-layout__two-column-hanging-intro c-grid-layout__gap-2em c-intro">
         <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
-        <?php echo $intro; ?>
+        <div><?php echo $intro; ?></div>
       </section>
 
 
@@ -34,35 +34,62 @@
       <!-- Scroll to section buttons -->
 
       <!-- Two column video repeater boxes -->
+      <h3 class="c-section-header">Hanging Local Experiences</h3>
+      <section class="c-grid-layout c-grid-layout__two-column c-grid-layout__gap-3em c-videos">
+      <!-- ACF Repeater Videos -->
+      <?php if( have_rows('video') ): 
+        $i = 1;
 
-
+        while( have_rows('video') ): the_row(); 
+      // vars
+      $link = get_sub_field('link');
+      $title = get_sub_field('title');
+      $info = get_sub_field('info');
+      $url = get_sub_field('cta_url'); ?>
+        <!-- Start Video box -->
+        <div class="video">
+          <?php echo $link; ?><!-- Video embed code -->
+          <h5>Hanging Local Experience&nbsp;<?php echo $i; ?></h5>
+          <?php if( !empty($info) ): ?><?php echo $info; ?><?php endif; ?><!-- video info -->
+          <?php 
+            if( $url ) :
+          ?>
+          <a class="booking-link" href="<?php echo $url; ?>" target="_blank">Bookings</a>
+          <?php endif; ?>
+        </div>
+        <?php $i++; endwhile; ?>
+        <?php endif; ?>
+        <!-- END ACF Repeater Videos -->
+      </section>
 
       <!-- Two column video repeater boxes -->
 
-      
-
-      <h3>Hanging local Videos</h3>
-        <div class="videos">
-        <!-- ACF Repeater Videos -->
-        <?php if( have_rows('video') ): ?><?php while( have_rows('video') ): the_row(); 
-        // vars
-        $link = get_sub_field('link');
-        $title = get_sub_field('title');
-        $info = get_sub_field('info'); ?>
-          <!-- Start Video box -->
-          <div class="video">
-          
-            <div class="vid-left"><?php echo $link; ?></div><!-- Video embed code -->
-            <div class="vid-right">
-              <?php if( !empty($title) ): ?><h5><?php echo $title; ?></h5><?php endif; ?><!-- video title if it has one -->
-              <?php if( !empty($info) ): ?><?php echo $info; ?><?php endif; ?><!-- video info -->
-            </div>
-          </div>
-          <?php endwhile; ?><?php endif; ?>
-          <!-- END ACF Repeater Videos -->
+      <!-- Galleries -->
+      <h3 class="c-section-header">Galleries</h3>
+      <section class="c-galleries c-grid-layout c-grid-layout__three-column c-grid-layout__gap-2em">
+      <!-- ACF Repeater Galleries -->
+      <?php if( have_rows('gallery_repeater') ): ?><?php while( have_rows('gallery_repeater') ): the_row(); 
+      // vars
+      $name = get_sub_field('gallery_name');
+      $gallery = get_sub_field('gallery');
+      ?>
+        <!-- Start Video box -->
+        <div class="c-gallery">
+          <?php if( !empty($name) ): ?><h5><?php echo $name; ?></h5><?php endif; ?>
+          <?php if( !empty($gallery) ): ?><?php echo $gallery; ?><?php endif; ?>
         </div>
+        <?php endwhile; ?>
+        <?php endif; ?>
+        <!-- END ACF Repeater Galleries -->
+      </section>
+      <!-- Galleries -->
 
-      <?php the_content(); ?>
+      <!-- Friends and Family -->
+      <h3 class="c-section-header">Friends and Family</h3>
+      <section class="c-content">
+        <?php the_content(); ?>
+      </section>
+      <!-- Friends and Family -->
     <?php endwhile; ?>
     <?php endif; ?>
     </div>
