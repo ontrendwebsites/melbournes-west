@@ -1,0 +1,340 @@
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 980px;
+
+$primary: #0073ae;
+$secondary: #009f93;
+$white: #FFF;
+$grey: #7c8b8f;
+$hang-dark: #5f090d;
+$hang-red: #ef3e22;
+$hang-aqua: #58bbac;
+
+// font-family: "Open Sans", sans-serif;
+// font-family: 'durus';
+// font-family:"Montserrat",sans-serif;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hanging-local-page {
+
+  .c-section-header {
+    font-size: 2em;
+    padding: 0;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 2.5em;
+      padding: 1em 0 .6em;
+    }
+  }
+
+  section {
+    border-bottom: 1px solid $primary;
+    margin: 2em 0;
+    padding-bottom: 3em;
+
+    &.c-intro {
+
+      padding: 0 0 2em 0;
+
+      p {
+        //margin: auto;
+        font-family:"Montserrat",sans-serif;
+        font-size: 1.2em;
+        line-height: 160%;
+
+        @media screen and (max-width: $tablet) {
+          margin-bottom: 1em;
+        }
+      }
+
+      @media screen and (max-width: $tablet) {
+        padding-bottom: 1em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+}
+
+
+.c-grid-layout {
+
+  &.c-grid-layout__two-column {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.c-grid-layout__three-column {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &.c-grid-layout__four-column {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  &.c-grid-layout__gap-1em { grid-gap: 1em }
+  &.c-grid-layout__gap-2em { grid-gap: 2em }
+  &.c-grid-layout__gap-3em { grid-gap: 3em }
+
+  @media screen and (min-width: $tablet) {
+    display: grid;
+  }
+
+  // custom grids
+  &.c-grid-layout__two-column-hanging-intro {
+    display: block;
+    justify-items: center;
+    background: #5f090d;
+    background: $white;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+    }
+
+    div {
+      margin: auto;
+
+      @media screen and (min-width: $tablet) {
+        margin-top: 2em;
+      }
+    }
+
+    img {
+      margin-bottom: 1.5em;
+    }
+
+    p, h3, a {
+      color: $white;
+      color: $hang-dark;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.2em;
+      line-height: 140%;
+    }
+
+
+
+    @media screen and (min-width: $tablet) {
+      h3 {
+        font-size: 2em;
+      }
+
+      img {
+        margin-bottom: 3em;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.c-videos {
+
+  .video {
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid $grey;
+    padding-bottom: 5em;
+    position: relative;
+
+    // elements to keep aligned
+    h5,
+    h4,
+    p {
+      align-self: start;
+    }
+
+
+    @media screen and (max-width: $tablet) {
+      margin-bottom: 1em;
+    }
+
+    h5 {
+      font-size: 1.25em;
+      margin: .5em 0;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: $primary;
+      border-bottom: 2px solid;
+    }
+
+    h4 {
+      font-size: 1.6em;
+      color: $hang-red;
+      font-weight: 600;
+      line-height: 130%;
+    }
+
+    p {
+      margin: 0 0 .5em 0;
+      line-height: 150%;
+    }
+
+    .booking-link {
+      position: absolute;
+      width: 100%;
+      bottom: 1em;
+    }
+  }
+}
+
+.booking-link {
+  margin-top: .5em;
+  font-family: 'Open Sans';
+  font-weight: 900;
+  font-size: 1.2em;
+  padding: 12px;
+  background: $primary;
+  color: $white;
+  display: block;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:hover {
+    background: darken($primary, 10%);
+    color: $white;
+  }
+
+  &.booking-link-lite {
+    background: $hang-aqua;
+    font-size: 1em;
+    padding: 5px;
+
+    &:hover {
+      background: darken($hang-aqua, 10%);
+    }
+  }
+
+  width: 100%;
+}
+
+.video-link {
+  color: $hang-red;
+  font-weight: 600;
+  text-decoration: underline;
+
+  &:hover {
+    color: darken($hang-red, 10%);
+  }
+}
+
+.gallery {
+
+  .gallery-item {
+    display: none;
+
+    &:first-child {
+      display: block;
+    }
+  }
+}
+
+.c-gallery .gallery {
+  display: flex;
+
+  .gallery-item {
+    width: 100%!important;
+    max-width: none!important;
+    float: none!important;
+    clear: both;
+
+    .gallery-icon a img {
+
+    }
+  }
+}
+
+.c-friends {
+
+  .c-friends-intro {
+    font-size: 1.5em;
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+  }
+
+  .c-grid-layout.c-grid-layout__three-column {
+    margin-bottom: 2em;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 2fr;
+    border-bottom: 1px solid;
+    padding-bottom: 2em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  /*
+  a {
+    background: #72c9bf;
+    color: #231f20;
+    text-align: center;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-family: 'Open Sans';
+    font-weight: 900;
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    display: block;
+    margin: 1em 0;
+
+    &:hover {
+      background: #231f20;
+      color: #72c9bf;
+    }
+  }
+  */
+}
+
+.c-friends-title {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.c-friends-intro {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.c-intro-scroll-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
