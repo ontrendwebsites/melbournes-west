@@ -87,9 +87,9 @@
 
       <!-- Sponsor logos footer -->
       <?php
-        $footer_logos = get_field('footer_logos');
+        $footer_logos = get_field('footer_logos', false, false);
         if($footer_logos) : 
-          echo '<section class="c-logos">';
+          echo '<section class="c-logos" style="text-align: center;">';
           echo $footer_logos;
           echo '</section>';
         endif;
