@@ -27,7 +27,7 @@
 
 			<!-- left width container -->
 			<div class="about-spacer"></div>
-			<h2>Our Strategic Plan 2014 - 2017</h2>
+			<h2><?php the_field('strategic_plan_heading'); ?></h2>
 
 			<h3>Summary</h3>
 

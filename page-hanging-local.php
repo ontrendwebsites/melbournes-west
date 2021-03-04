@@ -40,12 +40,13 @@
 
 
       <!-- Scroll to section buttons -->
-
+      <?php if( have_rows('video') ): ?>
       <!-- Two column video repeater boxes -->
       <h3 id="section-1" class="c-section-header">Hanging Local Experiences</h3>
       <section class="c-grid-layout c-grid-layout__two-column c-grid-layout__gap-3em c-videos">
+        
         <!-- ACF Repeater Videos -->
-        <?php if( have_rows('video') ): 
+        <?php 
         $i = 1;
 
         while( have_rows('video') ): the_row(); 
@@ -66,9 +67,9 @@
           <?php endif; ?>
         </div>
         <?php $i++; endwhile; ?>
-        <?php endif; ?>
         <!-- END ACF Repeater Videos -->
       </section>
+      <?php endif; ?>
 
       <!-- Two column video repeater boxes -->
 

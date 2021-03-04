@@ -40,7 +40,23 @@ jQuery(document).ready(function(){
 
   //var x = document.getElementsByClassName("label-tribe-bar-date");
     //x[0].innerHTML = "Click here to pick a date";
+    
+    /* jQuery(window).bind("load", function() {
+      jQuery('img').each(function() {
+        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+          // image was broken, replace with your new image
+          var rurl = this.src;
+          var newurl = rurl.replace('http://localhost/WMT/','https://melbourneswest.com.au/')
+          this.src = newurl;
+        }
+      });
+    }); */
 
+    jQuery('.modal-toggle').on('click', function(e) {
+        console.log('ready');
+      e.preventDefault();
+      jQuery('.modal').toggleClass('is-visible');
+    });
 });
 
 
@@ -60,7 +76,7 @@ jQuery(document).ready(function(){
     $.ajax(settings).done(function (serverData) {
       
       var responseString = JSON.stringify(serverData);
-      console.log(responseString);
+      //console.log(responseString);
 
       // show all titles
       var objects = serverData.data;
@@ -99,7 +115,10 @@ jQuery(document).ready(function(){
 
             if(objects[i].Description) {
               buildHtml += '<div class="hidden-description">';
+              buildHtml += '<div class="description-header">';
+              buildHtml += '<img src="' + $imageClean + '" />';
               buildHtml += '<h3>' + $title + '</h3>';
+              buildHtml += '</div>';
               buildHtml += $description;
               buildHtml += '</div>';
             }
@@ -154,7 +173,7 @@ jQuery(document).ready(function(){
       var $eventDescription = $('.hidden-description');
 
       $modalLink.click(function() {
-        console.log('clicked');
+        //console.log('clicked');
 
         // the description
         var $content = $(this).parents('.event-card-inner').children('.hidden-description').clone();
@@ -168,7 +187,38 @@ jQuery(document).ready(function(){
     });
   }
 
+  function showDetailImage() {
+    var $container = $('.event-details-page'),
+        $eventImage = $('.event-heo-image'),
+        imageurl = $container.find('.main-image').attr('src');
+        $eventImage.css('background-image','url("'+ imageurl +'")');
+  }
+  
+  function datepickerCustom() {
+     var start = moment().subtract(29, 'days');
+     var end = moment();
+     jQuery('#reportrange').daterangepicker({
+         startDate: start,
+         endDate: end,
+         ranges: {
+            'Today': [moment(), moment()],
+            'Tomorrow': [moment().add(1, 'days'), moment().add(1, 'days')],
+            'This Week': [moment().startOf('week'), moment().endOf('week')],
+            'Next Week': [moment().add(1, 'weeks').startOf('isoWeek'), moment().add(1, 'weeks').endOf('isoWeek')],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+         }
+     }, function(start, end, label) {
+        jQuery('#reportrange span').html(start.format('DD-MM-YYYY') + ' - ' + end.format('DD-MM-YYYY'));
+        jQuery('#dateRange').val(start.format('DDMMYYYY') + ' ' + end.format('DDMMYYYY')).trigger('change');
+        jQuery('#dateStart').val(start.format('DDMMYYYY'));
+        jQuery('#dateEnd').val(end.format('DDMMYYYY'));
+     });
+ }
   $(window).load(function() {
-    ajaxRequest();
+    //ajaxRequest();
+    showDetailImage();
+    datepickerCustom();
+    $('.numberEvents').text('(' + $('#totalEvent').val() + ')');
   });
+  
 })( jQuery );
