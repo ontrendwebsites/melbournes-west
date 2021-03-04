@@ -36,7 +36,7 @@
 
 								<?php if(get_sub_field('file')): ?>
  								<div class="map-download">
- 									<a class="download-link" href="<?php echo $file['url']; ?>" target="_blank">
+ 									<a class="download-link" href="<?php echo $file; ?>" target="_blank">
  										<p><?php echo $filename; ?></p>
  										<span class="download-arrow"></span>
  									</a>

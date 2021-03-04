@@ -1,6 +1,7 @@
 $mobile: 320px;
 $tablet: 768px;
 $desktop: 980px;
+$navbreak: 1200px;
 
 $primary: #0073ae;
 $secondary: #009f93;
@@ -314,11 +315,65 @@ html {
 
 
 
+// responsive update for wider main nav
+@media screen and (max-width: $navbreak) {
+  .nav-container {
+      display: none;
+  }
+
+  .container #toggle-menu, .carticon-mobile {
+    display: inline-block;
+    float: right !important;
+    width: auto !important;
+    line-height: 80px !important;
+    height: 80px !important;
+  }
+}
 
 
+// updates Feb 2021
 
+h1, h2, h3, h4, h5, h6 {
+    
+    &.text-lowercase {
+        text-transform: initial;
+        letter-spacing: 0.02em;
+    }
+}
 
+.margin-bottom-1rem { 
+    margin-bottom: 1rem;
+}
 
+.margin-bottom-2rem { 
+    margin-bottom: 2rem;
+}
+
+.margin-bottom-3rem { 
+    margin-bottom: 3rem;
+}
+
+.margin-bottom-4rem { 
+    margin-bottom: 4rem;
+}
+
+.c-box {
+    padding: 1rem;
+    border: 1px solid #45a8cc;
+}
+
+.c-box--heading {
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.c-box--time {
+    
+}
+
+.c-box--location {
+    
+}
 
 
 

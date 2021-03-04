@@ -110,7 +110,15 @@ $google_fonts = array();
 
 </script>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <meta name="google-site-verification" content="tLsXBnnhhs8gDFhHkZpzJEzi52vEDaPinx4-jH8xBOg" />
+
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1caf78e70c74474f6c497f804/cc307d31664f8ec9ddedc3e0d.js");</script>
+	
+	<style>
+	</style>
     
 </head>
 

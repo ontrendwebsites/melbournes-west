@@ -116,7 +116,7 @@ ul.main_menu {
 
 /* Layout */
 #buddha .boxed-layout,
-#buddha .boxed-layout #main_navigation { max-width: 1024px!important;}
+#buddha .boxed-layout #main_navigation { max-width: 1200px!important;}
 
 
 /* Columns */
@@ -331,7 +331,7 @@ hr { clear: both;}
 .mobile { display: none;}
 
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 1200px) {
   .summary-box {
     display: block;
     padding: 0;
