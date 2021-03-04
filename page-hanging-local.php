@@ -67,7 +67,6 @@
           <?php endif; ?>
         </div>
         <?php $i++; endwhile; ?>
-        <?php endif; ?>
         <!-- END ACF Repeater Videos -->
       </section>
       <?php endif; ?>

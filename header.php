@@ -17,26 +17,17 @@
 <![endif]-->
 
 
-<?php global $brad_data; ?>
-<?php if( isset($brad_data['media_favicon']['url'] )) { ?>
-    <link rel="shortcut icon" href="<?php echo $brad_data['media_favicon']['url']; ?>">
-<?php } ?>
 
-<?php if( isset($brad_data['media_favicon_iphone']['url'] )) { ?>
-    <link rel="apple-touch-icon" href="<?php echo $brad_data['media_favicon_iphone']['url']; ?>">
-<?php } ?>
 
-<?php if( isset($brad_data['media_favicon_iphone_retina']['url'] )) { ?>
-    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo $brad_data['media_favicon_iphone_retina']['url']; ?>">
-<?php } ?>
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
 
-<?php if( isset($brad_data['media_favicon_ipad']['url'] )) { ?>
-    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo $brad_data['media_favicon_ipad']['url']; ?>">
-<?php } ?>
 
-<?php if( isset($brad_data['media_favicon_ipad_retina']['url'] )) { ?>
-    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo $brad_data['media_favicon_ipad_retina']['url']; ?>">
-<?php } ?>
 
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
