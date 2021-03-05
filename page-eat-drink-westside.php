@@ -21,10 +21,16 @@
       ?>
 
       <!-- Two column intro section -->
+    
+      <?php if($image): ?>
+        <section class="c-grid-layout c-grid-layout__two-column-hanging-intro c-grid-layout__gap-2em c-intro" style="grid-template-columns: 1fr 2fr;">
+        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+      <?php endif; ?>
+      <?php if($intro_video): ?>
       <section class="c-grid-layout c-grid-layout__two-column-hanging-intro c-grid-layout__gap-2em c-intro">
-        <!-- <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" /> -->
         <?php echo $intro_video; ?>
-        <div><?php echo $intro; ?></div>
+        <?php endif; ?>
+        <div style="margin: auto;"><?php echo $intro; ?></div>
       </section>
       <!-- Two column intro section -->
 
@@ -44,7 +50,9 @@
       ?>
 
       <h3 id="section-1" class="c-section-header">Westside Crawls 2021</h3>
+
       <section class="c-grid-layout c-grid-layout__two-column c-grid-layout__gap-3em c-videos">
+        <?php echo '<div>' . get_field('video_intro') . '</div><div></div>'; ?>
         <!-- ACF Repeater Videos -->
         <?php
         $i = 1;
